@@ -13,7 +13,9 @@ module.exports = {
     proxyTable: {},
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    // host: 'localhost', // can be overwritten by process.env.HOST
+    // 为后端访问页面，把host改为10.99.
+    host: '172.88.1.127',
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
@@ -46,6 +48,12 @@ module.exports = {
   build: {
     // Template for index.html
     index: path.resolve(__dirname, '../dist/index.html'),
+    appDetail: path.resolve(__dirname, '../dist/appDetail.html'),
+    instanceDetail: path.resolve(__dirname, '../dist/instanceDetail.html'),
+    moniter: path.resolve(__dirname, '../dist/moniter.html'),
+    instanceList: path.resolve(__dirname, '../dist/instanceList.html'),
+    auditList: path.resolve(__dirname, '../dist/auditList.html'),
+    audit: path.resolve(__dirname, '../dist/audit.html'),
 
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),

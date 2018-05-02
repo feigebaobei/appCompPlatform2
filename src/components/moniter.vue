@@ -1,12 +1,12 @@
 <template>
   <div>
-    appDetailCont
+    moniter
   </div>
 </template>
 
 <script>
 export default {
-  name: 'appDetailCont'
+  name: 'moniter'
 }
 </script>
 

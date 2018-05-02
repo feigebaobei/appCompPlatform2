@@ -18,22 +18,18 @@ export default new Router({
       path: '/',
       name: 'silent',
       component: managevue
-      // component: resolve => require(['../components/managevue.vue'], resolve)
     },
     {
       path: '/appManage',
       component: managevue
-      // component: resolve => require(['../components/managevue.vue'], resolve)
     },
     {
       path: '/list',
       component: listvue
-      // component: resolve => require(['../components/listvue.vue'], resolve)
     },
     {
       path: '/audit',
       component: auditvue
-      // component: resolve => require(['../components/auditvue.vue'], resolve)
     }
   ]
 })

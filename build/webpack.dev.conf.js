@@ -54,8 +54,45 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'index.html',
-      inject: true
+      template: './template/index.html',
+      inject: true,
+      chunks: ['app']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'appDetail.html',
+      template: './template/appDetail.html',
+      inject: true,
+      chunks: ['appDetail']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'instanceDetail.html',
+      template: './template/instanceDetail.html',
+      inject: true,
+      chunks: ['instanceDetail']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'moniter.html',
+      template: './template/moniter.html',
+      inject: true,
+      chunks: ['moniter']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'instanceList.html',
+      template: './template/instanceList.html',
+      inject: true,
+      chunks: ['instanceList']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'auditList.html',
+      template: './template/auditList.html',
+      inject: true,
+      chunks: ['auditList']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'audit.html',
+      template: './template/audit.html',
+      inject: true,
+      chunks: ['audit']
     }),
     // copy custom static assets
     new CopyWebpackPlugin([

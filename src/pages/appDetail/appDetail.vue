@@ -1,38 +1,35 @@
 <template>
-  <div id="app">
-    <!-- <img src="./assets/logo.png">
-    <router-view/> -->
-    <layoutvue :nav="manage"></layoutvue>
-    <!-- <headervue></headervue> -->
-    <div>{{results}}</div>
+  <div id="appDetail">
+    <layoutvue :nav="appDetail"></layoutvue>
   </div>
 </template>
 
 <script>
-import layoutvue from './components/layoutvue.vue'
+import layoutvue from '../../components/layoutvue.vue'
 export default {
-  name: 'App',
-  data: function () {
+  name: 'appDetail',
+  data () {
     return {
-      manage: 'manage',
-      results: ''
+      modal1: false,
+      imgUrl: './static/images/food.jpg',
+      appDetail: 'appDetail'
     }
   },
   components: {
     layoutvue
   },
-  computed: {
-
-  },
-  mounted () {
-    this.$axios.get('http://api.console.doc/server/index.php?g=Web&c=Mock&o=simple&projectID=2&uri=/api/apps/1').then(response => {
-      this.results = response
-    })
+  methods: {
+    ok () {
+      // this.$Message.info('Clicked ok')
+    },
+    cancel () {
+      this.$Message.info('Clicked cancel')
+    }
   }
 }
 </script>
 
-<style lang="scss">
+<style  lang="scss">
 html, body, #app {
   height: 100%;
 }
