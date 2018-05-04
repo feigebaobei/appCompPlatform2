@@ -69,6 +69,7 @@
                       <Button type="ghost" @click="handleResetDilatation('formDataDilatation')" style="margin-left: 8px">Reset</Button>
                     </FormItem>
                   </Form>
+                  <div slot="footer"></div>
                 </Modal>
               </Col>
             </Row>
@@ -317,7 +318,7 @@ export default {
       method: 'get',
       url: 'http://www.cloud.com/redis/mock/detail/id/36'
     }).then(response => {
-      console.log(response)
+      // console.log(response)
       this.responseDetail = response
       // response 里包括字段数据、表格数据。需要分别处理。
     }).catch(error => {

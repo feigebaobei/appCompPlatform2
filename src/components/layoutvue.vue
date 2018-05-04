@@ -79,7 +79,7 @@
             </Content> -->
           <!-- </router-view> -->
           <!-- 管理 start -->
-          <managevue v-if="nav === 'manage'" :userInfo="userInfo"></managevue>
+          <managevue v-if="nav === 'manage'"></managevue>
           <!-- 管理 end -->
           <!-- 应用详情 start -->
           <appDetailCont v-if="nav === 'appDetail'"></appDetailCont>
@@ -122,10 +122,10 @@ export default {
       imgUrl: './static/images/food.jpg',
       curPage: '',
       /* 用户信息 start */
-      userInfo: {
-        name: '姓名',
-        uid: ''
-      },
+      // userInfo: {
+      //   name: '姓名',
+      //   uid: ''
+      // },
       /* 用户信息 end */
       responseSider: {
         data: {
@@ -163,6 +163,13 @@ export default {
     auditvue
   },
   computed: {
+    /* 用户信息 start */
+    userInfo: function () {
+      var a = this.$store.getters.getUserInfo
+      // console.log(a)
+      return a
+    },
+    /* 用户信息 end */
     curSelectedNav: function () {
       // 其实用不到这个函数。nav 就可以指定当前页面
       switch (this.nav) {
@@ -197,35 +204,6 @@ export default {
           return ['1']
       }
     }
-    // responseSider () {
-    //   data: {
-    //     data: {},
-    //     message: '',
-    //     status: ''
-    //   },
-    //   status: ''
-    // }
-    // sider () {
-    //   return [
-    //     {
-    //       name: responseSider.data.data[0].name,
-    //       child: []
-    //     },
-    //     {
-    //       name: responseSider.data.data[1].name,
-    //       child: [
-    //         {
-    //           name: responseSider.data.data[1].child[0].name,
-    //           child: []
-    //         },
-    //         {
-    //           name: responseSider.data.data[1].child[1].name,
-    //           child: []
-    //         }
-    //       ]
-    //     }
-    //   ]
-    // }
   },
   methods: {
   },
@@ -236,7 +214,9 @@ export default {
       url: 'http://api.console.doc/server/index.php?g=Web&c=Mock&o=simple&projectID=2&uri=/api/user'
     }).then(response => {
       // console.log(response)
-      this.userInfo = response.data.data
+      // console.log(this)
+      // this.userInfo = response.data.data
+      this.$store.dispatch('setUser', response.data.data)
     }).catch(error => {
       console.log(error)
     })

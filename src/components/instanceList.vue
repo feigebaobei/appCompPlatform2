@@ -134,10 +134,15 @@ export default {
             return h('Button', {
               on: {
                 click: () => {
+                  console.log(params)
                   this.modalInstanceList = true
-                  this.getOldDataInstance()
+                  var id = params.row.id
+                  this.getOldDataInstance(id)
                 }
               }
+              // attrs: {
+              //   'data-id': params.row.id
+              // }
             }, '编辑')
           }
         }
@@ -192,10 +197,10 @@ export default {
   },
   methods: {
     /* 生成指定实例的原信息 start */
-    getOldDataInstance () {
+    getOldDataInstance (id) {
       this.$axios({
         method: 'get',
-        url: 'http://10.99.1.135/redis/mock/edit/id/50'
+        url: 'http://10.99.1.135/redis/mock/edit/id/' + id
       }).then(response => {
         console.log(response)
         this.responseInstance = response
@@ -211,41 +216,41 @@ export default {
       this.formDataInstanceList.slave1_ip = this.responseInstance.data.data.slave_info[0].ip
       this.formDataInstanceList.slave2_ip = this.responseInstance.data.data.slave_info[1].ip
       this.formDataInstanceList.port = this.responseInstance.data.data.port
-    }
+    },
     /* 生成指定实例的原信息 end */
     /* 提交修改后的实例信息 start */
-    // handleSubmitInstanceList (name) {
-    //   this.$refs[name].validate((valid) => {
-    //     if (valid) {
-    //       this.modalInstanceList = false
-    //       this.$axios({
-    //         method: 'POST',
-    //         url: 'http://api.console.doc/server/index.php?g=Web&c=Mock&o=simple&projectID=2&uri=/api/privileges/app',
-    //         data: {
-    //           user_ids: this.formDataMoniter
-    //           // app_id: this.
-    //         }
-    //       }).then(response => {
-    //         console.log(response)
-    //         this.feedbackFormStatus(response.status === 200 && response.data.message === '操作成功')
-    //       })
-    //     } else {
-    //       this.$Message.error('不可为空')
-    //     }
-    //   })
-    // },
-    // handleResetInstanceList (name) {
-    //   this.$refs[name].resetFields()
-    // },
+    handleSubmitInstanceList (name) {
+      this.$refs[name].validate((valid) => {
+        if (valid) {
+          this.modalInstanceList = false
+          this.$axios({
+            method: 'post',
+            url: 'http://api.console.doc/server/index.php?g=Web&c=Mock&o=simple&projectID=2&uri=/api/privileges/app',
+            data: {
+              user_ids: this.formDataMoniter
+              // app_id: this.
+            }
+          }).then(response => {
+            console.log(response)
+            this.feedbackFormStatus(response.status === 200 && response.data.message === '操作成功')
+          })
+        } else {
+          this.$Message.error('不可为空')
+        }
+      })
+    },
+    handleResetInstanceList (name) {
+      this.$refs[name].resetFields()
+    },
     /* 提交修改后的实例信息 end */
     // 回馈提交状态
-    // feedbackFormStatus (bool) {
-    //   if (bool) {
-    //     this.$Message.success('操作成功！')
-    //   } else {
-    //     this.$Message.error('操作失败！')
-    //   }
-    // }
+    feedbackFormStatus (bool) {
+      if (bool) {
+        this.$Message.success('操作成功！')
+      } else {
+        this.$Message.error('操作失败！')
+      }
+    }
   },
   mounted () {
     // 得到实例表格数据

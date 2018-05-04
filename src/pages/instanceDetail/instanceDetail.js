@@ -5,6 +5,7 @@ import instanceDetail from './instanceDetail.vue'
 import router from '../../router/routerAppDetail.js'
 import axios from 'axios'
 import qs from 'qs'
+import statusManitor from '../../vuex/statusManitor.js'
 
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
@@ -19,5 +20,6 @@ Vue.use(iView)
 /* eslint-disable no-new */
 new Vue({
   el: '#instanceDetail',
+  store: statusManitor,
   render: h => h(instanceDetail)
 })

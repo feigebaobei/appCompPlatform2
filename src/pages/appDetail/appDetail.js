@@ -7,6 +7,7 @@ import axios from 'axios'
 import qs from 'qs'
 
 import iView from 'iview'
+import statusManitor from '../../vuex/statusManitor.js'
 import 'iview/dist/styles/iview.css'
 
 Vue.prototype.$axios = axios
@@ -19,5 +20,6 @@ Vue.use(iView)
 /* eslint-disable no-new */
 new Vue({
   el: '#appDetail',
+  store: statusManitor,
   render: h => h(appDetail)
 })

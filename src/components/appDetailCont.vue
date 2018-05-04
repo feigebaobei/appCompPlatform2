@@ -473,7 +473,7 @@ export default {
   computed: {
     responseOverview: {
       set (data) {
-        console.log(data)
+        // console.log(data)
         this.responseOverviewTemp = data
       },
       get () {
@@ -632,7 +632,7 @@ export default {
       url: 'http://api.console.doc/server/index.php?g=Web&c=Mock&o=simple&projectID=2&uri=/api/apps/1'
       // url: 'http://www.cloud.com/redis/mock/detail/id/36'
     }).then(response => {
-      console.log(response)
+      // console.log(response)
       // this.responseOverview = response
       this.responseOverview = response
     }).catch(error => {

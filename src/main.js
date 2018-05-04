@@ -5,6 +5,7 @@ import App from './App'
 import router from './router/index.js'
 import axios from 'axios'
 import iView from 'iview'
+import statusManitor from './vuex/statusManitor.js'
 import 'iview/dist/styles/iview.css'
 
 Vue.prototype.$axios = axios
@@ -17,6 +18,7 @@ Vue.use(iView)
 new Vue({
   el: '#app',
   router,
+  store: statusManitor,
   components: { App },
   template: '<App/>'
 })

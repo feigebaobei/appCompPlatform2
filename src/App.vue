@@ -4,7 +4,6 @@
     <router-view/> -->
     <layoutvue :nav="manage"></layoutvue>
     <!-- <headervue></headervue> -->
-    <div>{{results}}</div>
   </div>
 </template>
 
@@ -14,8 +13,7 @@ export default {
   name: 'App',
   data: function () {
     return {
-      manage: 'manage',
-      results: ''
+      manage: 'manage'
     }
   },
   components: {
@@ -25,9 +23,6 @@ export default {
 
   },
   mounted () {
-    this.$axios.get('http://api.console.doc/server/index.php?g=Web&c=Mock&o=simple&projectID=2&uri=/api/apps/1').then(response => {
-      this.results = response
-    })
   }
 }
 </script>
