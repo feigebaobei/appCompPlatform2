@@ -212,7 +212,7 @@ export default {
       var resultArr = reg.exec(href)
       var idStr = resultArr[0]
       var id = idStr.slice(4, -2)
-      console.log(id)
+      // console.log(id)
       return id
     },
     // 内存
